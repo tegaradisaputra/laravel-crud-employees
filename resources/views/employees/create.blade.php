@@ -1,6 +1,5 @@
 @include('layouts.header')
 
-
     {{-- content start --}}
     <main class=" px-12 py-5 bg-gray-100 w-full min-h-screen">
 
@@ -121,53 +120,5 @@
 
     </main>
     {{-- content end --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- <form action="{{ route('employee.store') }}" method="POST">
-        @csrf
-        <input type="text" name="nik" placeholder="NIK">
-        <input type="text" name="nama_lengkap" placeholder="Nama Lengkap">
-        <input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir">
-        <select name="jenis_kelamin">
-            <option name="jenis_kelamin" value="L">Laki-laki</option>
-            <option name="jenis_kelamin" value="P">Perempuan</option>
-        </select>
-        <input type="text" name="alamat" placeholder="Alamat">
-        <input type="text" name="no_hp" placeholder="No HP">
-        <input type="email" name="email" placeholder="Email">
-        <button type="submit">Simpan</button>
-    </form> --}}
 
 @include('layouts.footer')
