@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\EmployeeJob;
 use App\Models\EmployeeEducation;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -18,7 +19,7 @@ class EmployeeController extends Controller
         $employees = Employee::all();
 
         // mengirim data karyawan ke view index
-        return view('employee.index', compact('employees'));
+        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -27,7 +28,7 @@ class EmployeeController extends Controller
     public function create()
     {
         // menampilkan form untuk menambah data karyawan
-        return view('employee.create');
+        return view('employees.create');
     }
 
     /**
@@ -37,14 +38,19 @@ class EmployeeController extends Controller
     {
         // validasi data yang diterima dari form
         $validatedData = $request->validate([
-            'nik' => 'required',
-            'nama_lengkap' => 'required|string|max:255',
+            'nik' => 'required|unique:employees,nik',
+            'nama_depan' => 'required|string|max:255',
+            'nama_belakang' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required|in:L,P',   
             'alamat' => 'required|string',
             'no_hp' => 'required|string|max:15',
-            'email' => 'required|email|unique:employees,email',
+            'email' => 'required',
         ]);
+
+        // gabung nama depan dan belakang menjadi nama lengkap
+        $validatedData['nama_lengkap'] = $validatedData['nama_depan'] . ' ' . $validatedData['nama_belakang'];
+        unset($validatedData['nama_depan'], $validatedData['nama_belakang']);
 
         // simpan data karyawan ke database
         $employee = Employee::create($validatedData);
@@ -58,12 +64,10 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        // mengambil semua data job dan education dari database
-        $employeeJobs = EmployeeJob::all();
-        $employeeEducations = EmployeeEducation::all();
+        // mengambil data karyawan berdasarkan id
 
         // menampilkan detail untuk data karyawan
-        return view('employee.show', compact('employee', 'employeeJobs', 'employeeEducations'));
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -71,12 +75,9 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        // mengambil semua data job dan education dari database
-        $employeeJobs = EmployeeJob::all();
-        $employeeEducations = EmployeeEducation::all();
 
         // menampilkan detail untuk data karyawan
-        return view('employee.edit', compact('employee', 'employeeJobs', 'employeeEducations'));
+        return view('employees.edit', compact('employee'));
     }
 
     /**
@@ -85,14 +86,14 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         // validasi data yang diterima dari form
-        $validatedData = $request->validated([
-            'nik' => 'required|unique:employees,nik',
+        $validatedData = $request->validate([
+            'nik' => 'required',
             'nama_lengkap' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:L,P',
             'alamat' => 'required|string',
             'no_hp' => 'required|string|max:15',
-            'email' => 'required|email|unique:employees,email',
+            'email' => 'required',
         ]);
 
         // simpan data karyawan ke database
