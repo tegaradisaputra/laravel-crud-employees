@@ -6,7 +6,7 @@
         <div class="w-1/2 mx-auto flex flex-col">
             
             <div class="flex flex-col items-start mb-6">
-                <a href="{{ route('employee.index') }}" class="flex items-center gap-2 mb-3 text-gray-600 hover:text-gray-900 font-medium">
+                <a href="{{ route('employee.show', $employee->id) }}" class="flex items-center gap-2 mb-3 text-gray-600 hover:text-gray-900 font-medium">
                     <ion-icon name="arrow-back-outline"></ion-icon>
                     <span>Back</span>
                 </a>
@@ -41,7 +41,7 @@
                         <!-- Nama Depan -->
                         <div>
                             <label class="block text-sm mb-1">Nama Depan</label>
-                            <input type="text" name="nama_depan" value="{{ $employee->nama_depan }}"
+                            <input type="text" name="nama_depan" value="{{ old('nama_depan', $nama_depan) }}"
                                 class="w-full border outline-none border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded px-3 py-2 shadow-md"
                                 placeholder="Nama Depan">
                         </div>
@@ -49,7 +49,7 @@
                         <!-- Nama Belakang -->
                         <div>
                             <label class="block text-sm mb-1">Nama Belakang</label>
-                            <input type="text" name="nama_belakang" value="{{ $employee->nama_belakang }}"
+                            <input type="text" name="nama_belakang" value="{{ old('nama_belakang', $nama_belakang) }}"
                                 class="w-full border outline-none border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded px-3 py-2 shadow-md"
                                 placeholder="Nama Belakang">
                         </div>
@@ -64,11 +64,11 @@
                         <!-- Jenis Kelamin -->
                         <div>
                             <label class="block text-sm mb-1">Jenis Kelamin</label>
-                            <select name="jenis_kelamin" value="{{ $employee->jenis_kelamin }}"
+                            <select name="jenis_kelamin" "
                                     class="w-full border outline-none border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded px-3 py-2 shadow-md">
                                 <option value="">-- Pilih --</option>
-                                <option value="L">Laki-laki</option>
-                                <option value="P">Perempuan</option>
+                                <option value="L" {{ $employee->jenis_kelamin == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                <option value="P" {{ $employee->jenis_kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
                             </select>
                         </div>
 
@@ -101,7 +101,7 @@
                     <!-- Button -->
                     <div class="flex justify-end gap-4 text-center">
 
-                        <a href="{{ route('employee.index') }}" class="px-4 py-1.5 bg-white text-gray-900 border border-gray-900 rounded">
+                        <a href="{{ route('employee.show', $employee->id) }}" class="px-4 py-1.5 bg-white text-gray-900 border border-gray-900 rounded">
                             <span>Cancel</span>
                         </a>
 

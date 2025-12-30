@@ -75,9 +75,14 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
+        $nama = explode(' ',$employee->nama_lengkap, 2);
 
-        // menampilkan detail untuk data karyawan
-        return view('employees.edit', compact('employee'));
+        // menampilkan detail untuk data karyawan dan mengirim data ke view edit
+        return view('employees.edit', [
+            'employee' => $employee,
+            'nama_depan' => $nama[0],
+            'nama_belakang' => $nama[1] ?? ''
+        ]);
     }
 
     /**
@@ -88,13 +93,18 @@ class EmployeeController extends Controller
         // validasi data yang diterima dari form
         $validatedData = $request->validate([
             'nik' => 'required',
-            'nama_lengkap' => 'required|string|max:255',
+            'nama_depan' => 'required|string|max:255',
+            'nama_belakang' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:L,P',
             'alamat' => 'required|string',
             'no_hp' => 'required|string|max:15',
             'email' => 'required',
         ]);
+
+        // gabung nama depan dan belakang menjadi nama lengkap
+        $validatedData['nama_lengkap'] = $validatedData['nama_depan'] . ' ' . $validatedData['nama_belakang'];
+        unset($validatedData['nama_depan'], $validatedData['nama_belakang']);
 
         // simpan data karyawan ke database
         $employee->update($validatedData);
