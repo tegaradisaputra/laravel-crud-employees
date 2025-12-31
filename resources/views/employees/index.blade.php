@@ -8,7 +8,7 @@
                 <p class="text-gray-600">Manage your team members and their roles.</p>
             </div>
 
-            <div class="flex gap-2 items-center relative ">
+            <div class="flex gap-2 items-center relative">
                 <ion-icon name="search-outline" class="absolute left-2 z-10"></ion-icon>
                 <input type="text" placeholder="Search Employees..." class="bg-white drop-shadow-sm rounded-md px-3 pl-8 py-1 outline-none border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
 

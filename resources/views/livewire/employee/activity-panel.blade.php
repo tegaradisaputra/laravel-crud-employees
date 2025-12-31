@@ -23,11 +23,17 @@
     </div>
 
     @if ($tab == 'overview')
-    <livewire:employee.card-list.overview-card-list  :employee="$employee"/>
+    <livewire:employee.card-list.overview-card-list  
+    :employee="$employee"
+    />
+
     @elseif($tab == 'experience')
     <livewire:employee.card-list.experience-card-list />
+
     @elseif($tab == 'education')
-    <livewire:employee.card-list.education-card-list />
+    <livewire:employee.card-list.education-card-list 
+    :employee="$employee"
+    />
     @endif
 
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EmployeeEducation;
 use Illuminate\Http\Request;
+use App\Models\EmployeeEducation;
 
 class EmployeeEducationController extends Controller
 {
@@ -12,7 +12,10 @@ class EmployeeEducationController extends Controller
      */
     public function index()
     {
-        //
+        // mengambil semua data dari EmployeeEducatuon
+        $employeeEducations = EmployeeEducation::all();
+
+        return view('employees.show', compact('employeeEducations'));
     }
 
     /**

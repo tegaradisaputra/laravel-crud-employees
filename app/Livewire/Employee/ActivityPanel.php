@@ -4,6 +4,7 @@ namespace App\Livewire\Employee;
 
 use Livewire\Component;
 use App\Models\Employee;
+use App\Models\EmployeeEducation;
 
 class ActivityPanel extends Component
 {

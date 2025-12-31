@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\EmployeeJob;
 use App\Models\EmployeeEducation;
 use Illuminate\Validation\Rule;
-use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
