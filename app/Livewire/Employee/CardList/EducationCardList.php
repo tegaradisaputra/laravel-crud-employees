@@ -39,7 +39,6 @@ class EducationCardList extends Component
     public function onEducationCreated()
     {
         $this->hideForm();
-        // Livewire auto re-render → list ke-refresh
     }
 
 

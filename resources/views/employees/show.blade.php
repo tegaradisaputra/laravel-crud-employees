@@ -25,7 +25,7 @@
                 <form action="{{ route('employee.destroy', $employee->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="px-4 py-1.5 flex items-center bg-red-600 text-white rounded-md hover:bg-red-500">
+                    <button type="submit" class="px-4 py-1.5 flex items-center bg-red-600 text-white rounded-md hover:bg-red-500 cursor-pointer">
                         <ion-icon name="trash-outline"></ion-icon>
                     </button>
                 </form>

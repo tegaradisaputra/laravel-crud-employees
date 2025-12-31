@@ -32,7 +32,7 @@ class EducationForm extends Component
             'tahun_lulus' => $this->tahun_lulus,
         ]);
 
-        $this->dispatch('closeEducationForm');
+        $this->dispatch('educationCreated');
     }
 
 
