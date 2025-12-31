@@ -30,6 +30,9 @@
                     </button>
                 </form>
             </div>
+
+            <livewire:employee.activity-panel :employee="$employee"/>
+
         </div>
     </main>
 

@@ -22,7 +22,7 @@
         <div class="grid grid-cols-5 gap-1">
             {{-- card employee list --}}
             @foreach ($employees as $e)
-            <a href="{{ route('employee.show', $e->id) }}" class="group relative bg-white rounded-md w-60 mt-12 shadow-lg transition duration-100 hover:-translate-y-0.5 hover:shadow-xl">
+            <a href="{{ route('employee.show', $e->id) }}" class="group relative bg-white rounded-md w-80 mt-12 shadow-lg transition duration-100 hover:-translate-y-0.5 hover:shadow-xl">
                 <div class="h-20 bg-blue-100/75"></div>
     
                 <div class="absolute top-10 left-8 -translate-x-1">

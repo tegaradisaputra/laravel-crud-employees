@@ -15,7 +15,7 @@
 <body>
 
     {{-- header start --}}
-    <header class="flex w-full px-12 items-center justify-between h-14 bg-white border-b border-gray-200">
+    <header class="flex w-full px-12 items-center justify-between h-16 bg-white border-b border-gray-200">
         <div class="flex items-center gap-2 ">
             <ion-icon class="bg-blue-100 rounded-md text-blue-600 p-2 text-xl" name="people-outline"></ion-icon>
             <a href="/employee" class="text-2xl font-semibold text-gray-900">Employee Manager</a>
