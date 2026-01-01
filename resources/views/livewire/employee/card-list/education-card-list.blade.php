@@ -16,7 +16,8 @@
 
             <livewire:education.education-form
                 :employee="$employee"
-                wire:key="create-education-form"
+                :educations="$editingEducationId"
+                wire:key="'create-education-form' . $editingEducationId->id"
             />
 
         </div>
@@ -33,11 +34,11 @@
                 <ion-icon class="rounded-md bg-blue-100 text-blue-500 text-2xl p-3 mb-2" name="school-outline"></ion-icon>
 
                 <div class="hidden group-hover:flex text-lg gap-2">
-                    <button>
+                    <button wire:click="edit({{ $edu->id }})">
                         <ion-icon name="pencil-outline"></ion-icon>
                     </button>
                     
-                    <button>
+                    <button wire:click="delete({{ $edu->id }})">
                         <ion-icon class="text-red-500" name="trash-outline"></ion-icon>
                     </button>
                 </div>

@@ -8,7 +8,7 @@
         </div>
             
         
-            
+        
         <div class="grid grid-cols-2 items-center w-2/3">
             <p class="text-gray-500 font-medium">Email</p>
             <p class="text-sm">{{ $employee->email }}</p>
@@ -23,6 +23,7 @@
             <p class="text-gray-500 font-medium">Location</p>
             <p class="text-sm">{{ $employee->alamat }}</p>
         </div>
+    </div>
         
 
 </div>

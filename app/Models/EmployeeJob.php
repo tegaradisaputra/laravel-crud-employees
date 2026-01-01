@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeeJob extends Model
 {
+
     // mass assignment
     protected $fillable = [
     'employee_id',

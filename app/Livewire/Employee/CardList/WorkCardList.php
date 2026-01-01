@@ -12,6 +12,8 @@ class WorkCardList extends Component
 
     public bool $showCreateForm = false;
 
+    public ?int $editingJobId = null;
+
     protected $listeners = [
         'workCreated' => 'onWorkCreated',
         'closeWorkForm' => 'hideForm'
@@ -27,20 +29,39 @@ class WorkCardList extends Component
         $this->showCreateForm = true;
     }
 
+
     public function hideForm()
     {
         $this->showCreateForm = false;
     }
 
+
     public function onWorkCreated()
     {
+        $this->employee->refresh();
         $this->hideForm();
     }
+
+
+    public function edit($jobId)
+    {
+        $this->editingJobId = $jobId;
+        $this->showCreateForm = true;
+    }
+
+
+
+    public function delete($employeeJob)
+    {
+        EmployeeJob::where('id', $employeeJob)->delete();
+        $this->employee->refresh();
+    }
+
 
     public function render()
     {
         return view('livewire.employee.card-list.work-card-list', [
-            'works' => $this->employee->job
+            'work' => $this->employee->job
         ]);
     }
 }

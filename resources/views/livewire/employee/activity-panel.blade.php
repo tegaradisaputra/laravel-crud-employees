@@ -28,7 +28,9 @@
     />
 
     @elseif($tab == 'work')
-    <livewire:employee.card-list.work-card-list />
+    <livewire:employee.card-list.work-card-list
+    :employee="$employee"
+    />
 
     @elseif($tab == 'education')
     <livewire:employee.card-list.education-card-list 
